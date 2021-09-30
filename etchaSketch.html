@@ -14,7 +14,7 @@
 <body>
     <div id="content-wrapper">
         <div>
-            <p>Hello, world!</p>
+            <button>Press me to create a grid or overwrite current grid</button>
         </div>
 
         <div id="gridContainer">
@@ -23,14 +23,31 @@
 
         <script>
 
-            const gridContainer = document.querySelector('#gridContainer');
-
             function clearContent(elementID) {
                 document.getElementById(elementID).innerHTML = "";
             }
 
+            const gridButtonFunction = document.querySelector('button');
+
+            gridButtonFunction.addEventListener('click', function(e) {
+
+                const gridSize = prompt("Please enter grid row/length size between 2-100");
+
+                clearContent("gridContainer");
+
+                if (gridSize < 2 || gridSize > 100) {
+                    alert("Please enter a number between 2-150");
+                    return;
+                } else {
+                    createGrid(gridSize);
+                }
+            });
+
+            
             function createGrid(divRows) {
             
+                const gridContainer = document.querySelector('#gridContainer');
+
                 clearContent("gridContainer");
 
                 gridContainer.style.cssText += `grid-template-columns: repeat(${divRows}, 1fr); grid-template-rows: repeat(${divRows}, 1fr)`;
@@ -43,20 +60,15 @@
                     gridContainer.appendChild(div);
                 };
 
-            };
-
+                const mouseColouring = document.querySelectorAll(`.gridItem`);          
             
-            /* document.querySelectorAll('gridItem').forEach(item => {
-                item.addEventListener('mouseenter', function(e) {
-                    e.target.style.color = "blue";
-                })
-            })
-
-            const sketch = document.getElementsByClassName("gridItem");
-
-            sketch.addEventListener("mouseover", function(event) {
-                event.target.style.color = "blue";
-            });*/
+                mouseColouring.forEach(item => {
+                    item.addEventListener('mouseenter', function(e) {
+                        item.style.background = 'blue';
+                    });
+                });
+                
+            };
 
         </script>
     </div>

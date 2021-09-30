@@ -5,15 +5,25 @@
     align-items: center;
 }
 
+button {
+    padding: 5px;
+    margin: 5px;
+}
+
 #gridContainer {
+    margin: 5px;
     width: 90vh;
     max-width: 90vw;
     height: 90vw;
     max-height: 90vh;
     display: grid;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .gridItem {
-    border: 1px solid black;
+    border: 0.1px solid black;
 }
+
+/*.gridItem:hover {
+    background-color: red;
+}*/
